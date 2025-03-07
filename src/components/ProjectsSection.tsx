@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Brain, CircuitBoard, Code, FileCode, MessageSquare, MicrosoftTeams, Network, Robot } from 'lucide-react';
+import { ArrowRight, Brain, CircuitBoard, Code, FileCode, MessageSquare, Network, Bot } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 
 // Project data
@@ -18,7 +18,7 @@ const projects = [
     id: 2,
     title: "Computer Vision System",
     description: "Real-time object detection and recognition system for security applications.",
-    icon: <Robot className="h-10 w-10 text-ai-blue" />,
+    icon: <Bot className="h-10 w-10 text-ai-blue" />,
     categories: ["Computer Vision", "Deep Learning", "Python"],
     gradient: "from-blue-500/20 to-cyan-500/20"
   },

@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { ArrowLeft, Brain, CircuitBoard, Code, ExternalLink, FileCode, Github, MessageSquare, Network, Robot } from 'lucide-react';
+import { ArrowLeft, Brain, CircuitBoard, Code, ExternalLink, FileCode, Github, MessageSquare, Network, Bot } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -49,7 +49,7 @@ const projectsData = [
     title: "Computer Vision System",
     description: "Real-time object detection and recognition system for security applications.",
     longDescription: "A sophisticated computer vision system designed for security and surveillance applications. This system can detect, track, and identify objects and people in real-time video feeds with high accuracy, even in challenging lighting conditions and environments.",
-    icon: <Robot className="h-10 w-10 text-ai-blue" />,
+    icon: <Bot className="h-10 w-10 text-ai-blue" />,
     categories: ["Computer Vision", "Deep Learning", "Python"],
     technologies: ["Python", "TensorFlow", "OpenCV", "YOLO", "Raspberry Pi", "AWS"],
     challenges: [
