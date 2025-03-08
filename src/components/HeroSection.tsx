@@ -38,7 +38,7 @@ const HeroSection: React.FC = () => {
           Transforming Businesses with AI Solutions
         </h1>
         <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-          We help companies leverage the power of artificial intelligence to drive innovation, 
+          We companies leverage the power of artificial intelligence to drive innovation, 
           optimize operations, and gain competitive advantages.
         </p>
       </div>
