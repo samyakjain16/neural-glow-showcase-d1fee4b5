@@ -1,110 +1,64 @@
+import React from 'react';
+import { Brain, Code, CircuitBoard, Network } from 'lucide-react';
 
-import React, { useEffect, useRef } from 'react';
-import { Button } from "@/components/ui/button";
-import { Link } from 'react-router-dom';
-import { ArrowRight, Brain, CircuitBoard, Code, Database, Network, Terminal } from 'lucide-react';
+interface Service {
+  title: string;
+  description: string;
+  icon: React.ReactNode;
+}
 
-const HeroSection = () => {
-  const particlesRef = useRef<HTMLDivElement>(null);
-  
-  useEffect(() => {
-    if (!particlesRef.current) return;
-    
-    const container = particlesRef.current;
-    const colors = ['#8B5CF6', '#0EA5E9', '#22D3EE'];
-    const sizes = [1, 2, 3];
-    const particleCount = 30;
-    
-    // Clear existing particles
-    container.innerHTML = '';
-    
-    // Create particles
-    for (let i = 0; i < particleCount; i++) {
-      const particle = document.createElement('div');
-      const size = sizes[Math.floor(Math.random() * sizes.length)];
-      const color = colors[Math.floor(Math.random() * colors.length)];
-      
-      particle.className = 'particle animate-particles';
-      particle.style.width = `${size}px`;
-      particle.style.height = `${size}px`;
-      particle.style.background = color;
-      particle.style.left = `${Math.random() * 100}%`;
-      particle.style.top = `${Math.random() * 100}%`;
-      particle.style.opacity = (Math.random() * 0.6 + 0.2).toString();
-      particle.style.animationDuration = `${Math.random() * 25 + 15}s`;
-      particle.style.animationDelay = `${Math.random() * 5}s`;
-      
-      container.appendChild(particle);
+const HeroSection: React.FC = () => {
+  const services: Service[] = [
+    {
+      title: "AI Consulting",
+      description: "Strategic guidance on implementing AI solutions for your specific business needs",
+      icon: <Brain className="w-10 h-10 text-primary" />
+    },
+    {
+      title: "Custom AI Development",
+      description: "Tailored AI solutions designed and built specifically for your unique challenges",
+      icon: <Code className="w-10 h-10 text-primary" />
+    },
+    {
+      title: "ML Model Training",
+      description: "Expert development and training of machine learning models using your data",
+      icon: <CircuitBoard className="w-10 h-10 text-primary" />
+    },
+    {
+      title: "AI Integration",
+      description: "Seamless integration of AI capabilities into your existing systems and workflows",
+      icon: <Network className="w-10 h-10 text-primary" />
     }
-  }, []);
-  
+  ];
+
   return (
-    <section className="relative min-h-screen flex items-center pt-16 pb-20 overflow-hidden neural-bg">
-      <div ref={particlesRef} className="particles" />
-      
-      <div className="container mx-auto px-4 z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <div>
-            <h1 className="mb-4">
-              <span className="block font-normal text-white/80">Hi, I'm</span>
-              <span className="gradient-text">AI Engineer</span>
-            </h1>
-            
-            <p className="text-xl md:text-2xl mt-8 mb-8 text-white/80 max-w-xl">
-              Building intelligent systems that understand, learn, and transform businesses through cutting-edge AI solutions.
-            </p>
-            
-            <div className="flex flex-wrap gap-4">
-              <Button asChild size="lg" className="bg-gradient-to-r from-ai-purple to-ai-blue hover:opacity-90 transition-opacity">
-                <Link to="/#projects">
-                  View My Projects <ArrowRight className="ml-2 h-4 w-4" />
-                </Link>
-              </Button>
-              
-              <Button asChild variant="outline" size="lg" className="border-white/20 hover:bg-white/5">
-                <Link to="/#contact">
-                  Get In Touch
-                </Link>
-              </Button>
+    <section className="py-16 px-4 md:px-8 max-w-7xl mx-auto">
+      <div className="text-center mb-16">
+        <h1 className="text-4xl md:text-5xl font-bold mb-6">
+          Transforming Businesses with AI Solutions
+        </h1>
+        <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          We help companies leverage the power of artificial intelligence to drive innovation, 
+          optimize operations, and gain competitive advantages.
+        </p>
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {services.map((service, index) => (
+          <div 
+            key={index} 
+            className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 flex flex-col items-center text-center"
+          >
+            <div className="mb-4">
+              {service.icon}
             </div>
+            <h3 className="text-xl font-semibold mb-3">{service.title}</h3>
+            <p className="text-gray-600">{service.description}</p>
           </div>
-          
-          <div className="relative hidden lg:block">
-            <div className="absolute inset-0 grid grid-cols-2 grid-rows-2 gap-6 animate-float">
-              <IconCard icon={<Brain className="h-6 w-6 text-ai-purple" />} title="AI Integration" />
-              <IconCard icon={<Network className="h-6 w-6 text-ai-blue" />} title="Neural Networks" delay="0.2s" />
-              <IconCard icon={<Code className="h-6 w-6 text-ai-cyan" />} title="LLM Development" delay="0.3s" />
-              <IconCard icon={<Database className="h-6 w-6 text-ai-purple" />} title="Data Processing" delay="0.1s" />
-              <IconCard className="col-span-2" icon={<Terminal className="h-6 w-6 text-ai-blue" />} title="Custom AI Solutions" delay="0.4s" />
-              <IconCard className="col-span-2" icon={<CircuitBoard className="h-6 w-6 text-ai-cyan" />} title="Intelligent Systems" />
-            </div>
-          </div>
-        </div>
+        ))}
       </div>
     </section>
   );
 };
-
-const IconCard = ({ 
-  icon, 
-  title, 
-  delay = "0s",
-  className = "",
-}: { 
-  icon: React.ReactNode; 
-  title: string; 
-  delay?: string;
-  className?: string;
-}) => (
-  <div 
-    className={`glass-card p-4 flex items-center gap-3 animate-pulse-gentle ${className}`}
-    style={{ animationDelay: delay }}
-  >
-    <div className="rounded-full bg-white/10 p-2 flex-shrink-0">
-      {icon}
-    </div>
-    <span className="font-medium">{title}</span>
-  </div>
-);
 
 export default HeroSection;
